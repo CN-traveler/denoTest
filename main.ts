@@ -1,3 +1,10 @@
-import { serve } from "https://deno.land/std@0.145.0/http/server.ts";
+import 'https://deno.land/x/fetch_event_adapter/listen.ts';
 
-serve((req: Request) => await fetch(new Request("https://github.com", req));
+// This module adds a global `FetchEvent`
+if (typeof FetchEvent !== 'undefined') console.log(true);
+
+// This module also adds global type declarations, s.t. this type-checks:
+self.addEventListener('fetch', event => {
+  const ip = event.request.headers.get('x-forwarded-for');
+  event.respondWith(new Response(`Hello ${ip ?? 'World'}`));
+});
