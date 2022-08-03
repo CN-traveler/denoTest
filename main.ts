@@ -5,5 +5,5 @@ if (typeof FetchEvent !== 'undefined') console.log(true);
 
 // This module also adds global type declarations, s.t. this type-checks:
 self.addEventListener('fetch', event => {
-  event.respondWith(const res = await fetch('https://www.baidu.com'));
+  event.respondWith(fetch('https://www.baidu.com'));
 });
