@@ -5,6 +5,5 @@ if (typeof FetchEvent !== 'undefined') console.log(true);
 
 // This module also adds global type declarations, s.t. this type-checks:
 self.addEventListener('fetch', event => {
-  const ip = event.request.headers.get('x-forwarded-for');
-  event.respondWith(new Response(`Hello ${ip ?? 'World'}`));
+  event.respondWith(const res = await fetch('https://www.baidu.com'));
 });
